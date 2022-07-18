@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,6 +19,9 @@ function App() {
           Learn React
         </a>
       </header>
+=======
+    
+>>>>>>> d0e4466b5b33f5860cd07993e7df9982f29ef826
     </div>
   );
 }
