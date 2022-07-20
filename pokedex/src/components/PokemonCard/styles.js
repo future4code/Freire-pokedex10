@@ -1,31 +1,32 @@
 
 import styled from 'styled-components';
 import background from './img/pokebola-bg.png'
+// import {changeColor} from './PokemonCard'
 
-export const Card = styled.div`
-color: white;
-width: 420px;
-height: 180px;
-margin: 90px;
-background: #729F92;
-border-radius: 12px;
-padding: 20px;
-& h1{
-    font-family: sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 32px;
-line-height: 39px;
-margin-top: -20px;
-}
-& p{
-    font-family: sans-serif;
-font-style: normal;
-font-weight: 700;
-font-size: 16px;
-line-height: 19px;
+// export const Card = styled.div`
+// color: white;
+// width: 420px;
+// height: 180px;
+// margin: 90px;
+// /* background-color: {changeColor}; */
+// border-radius: 12px;
+// padding: 20px;
+// & h1{
+//     font-family: sans-serif;
+// font-style: normal;
+// font-weight: 700;
+// font-size: 32px;
+// line-height: 39px;
+// margin-top: -20px;
+// }
+// & p{
+//     font-family: sans-serif;
+// font-style: normal;
+// font-weight: 700;
+// font-size: 16px;
+// line-height: 19px;
 
-}
+// }
 /* & img
 {
     position: absolute;
@@ -35,7 +36,7 @@ transform: rotate(30deg);
 opacity: 0.17;
 }
  */
-`
+
 
 export const PhotoContainer = styled.div `
 margin-left: 250px;
