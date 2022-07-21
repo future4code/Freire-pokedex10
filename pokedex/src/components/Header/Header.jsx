@@ -3,7 +3,7 @@ import PokeLogo from "../../img/logo.png";
 import { HeaderContainer } from "./style";
 import { Button } from "./style";
 import { useNavigate } from "react-router-dom";
-import { goToPokedex } from "../../routes/Coordinator";
+import { goToPokedex } from "../../Routes/coordinator";
 
 export default function Header() {
   const [currentscreen, setCurrentScreen] = useState("");
