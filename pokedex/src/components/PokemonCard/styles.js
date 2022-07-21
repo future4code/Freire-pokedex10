@@ -6,7 +6,6 @@ export const Card = styled.div`
 color: white;
 width: 420px;
 height: 180px;
-margin: 90px;
 background: #729F92;
 border-radius: 12px;
 padding: 20px;
@@ -17,6 +16,7 @@ font-weight: 700;
 font-size: 32px;
 line-height: 39px;
 margin-top: -20px;
+text-transform: capitalize;
 }
 & p{
     font-family: sans-serif;
@@ -36,12 +36,27 @@ opacity: 0.17;
 }
  */
 `
+export const CardContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+`
 
 export const PhotoContainer = styled.div `
 margin-left: 250px;
 margin-top: -150px;
 width: 193px;
 height: 193px;
+
+img{
+    max-width: 150px;
+
+}
 `
 
 
@@ -62,7 +77,7 @@ font-size: 14px;
 line-height: 21px;
 color: #FFFFFF;
 & img{
-    width: 17px;
+width: 17px;
 height: 19px;
 }
 `
@@ -105,9 +120,10 @@ padding: 4px 10px;
 
 width: 146px;
 height: 38px;
-color: white;
+color: black;
+font-size: 20px;
 border-style: none;
-background: #FF6262;
+background: white;
 border-radius: 8px;
 }
 

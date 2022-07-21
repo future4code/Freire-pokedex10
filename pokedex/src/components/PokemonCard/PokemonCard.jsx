@@ -5,20 +5,23 @@ import {
   ButtonType,
   DetalhesContainer,
   ButtonDiv,
+  CardContainer
 } from "./styles";
 import bulbasaur from "./img/bulbasaur.png";
 import background from "../../components/PokemonCard/img/pokebola-bg.png";
 import folha from "./img/folha.png";
 
-export const PokemonCard = () => {
-  return (
-    <div>
-      <Card>
-        <p>#01</p>
-        <h1>Bulbasaur</h1>
+export const PokemonCard = ({pokeInfos}) => {
+  console.log(pokeInfos)
+
+  const mappedPokemons = pokeInfos?.map((pokemon)=>{
+    return (
+      <Card key={pokemon.id}>
+        <p>#0{pokemon.id}</p>
+        <h1>{pokemon.name}</h1>
         {/* <img src={background} alt="" /> */}
         <PhotoContainer>
-          <img src={bulbasaur} alt="" />
+          <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
         </PhotoContainer>
         <ButtonDiv>
           <ButtonType>
@@ -31,9 +34,15 @@ export const PokemonCard = () => {
           </ButtonType>
         </ButtonDiv>
         <DetalhesContainer>
-          <p>Detalhes</p> <button>Excluir</button>
+          <p>Detalhes</p> <button>Capturar!</button>
         </DetalhesContainer>
       </Card>
-    </div>
+    )
+  })
+
+  return (
+    <CardContainer>
+      {mappedPokemons}
+    </CardContainer>
   );
 };
