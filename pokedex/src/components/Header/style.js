@@ -8,6 +8,14 @@ export const HeaderContainer = styled.div`
   background-color: white;
   /* max-width: 100%; */
 
+  ${(props) => {
+    if (props.CurrentScreen === "home") {
+      return "#home {background-color:white; :hover{cursor:auto;}}";
+    } else if (props.CurrentScreen === "pokedex") {
+      return "#pokedex {background-color:white; :hover{cursor:auto;}}";
+    }
+  }}
+
   @media (max-width: 750px) {
     height: 100px;
 

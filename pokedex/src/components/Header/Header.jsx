@@ -2,24 +2,34 @@ import React, { useState } from "react";
 import PokeLogo from "../../img/logo.png";
 import { HeaderContainer } from "./style";
 import { Button } from "./style";
+import { useNavigate } from "react-router-dom";
+import { goToPokedex } from "../../routes/Coordinator";
 
 export default function Header() {
-  const [screen, setScreen] = useState("/");
+  const [currentscreen, setCurrentScreen] = useState("");
 
-  // getHeaderPage = () => {
-  //   switch(){
-  //     case "":
-  //       return
-  //   }
-  // }
+  // const navigate = useNavigate();
+
+  const onClickPokedex = () => {
+    setCurrentScreen("pokedex");
+    // navigate("/pokedex");
+  };
+
+  const onClickHome = () => {
+    setCurrentScreen("home");
+  };
 
   console.log(window.location.pathname);
 
   return (
-    <HeaderContainer>
-      <Button>Pokédex</Button>
+    <HeaderContainer CurrentScreen={currentscreen}>
+      <Button id="home" onClick={onClickHome}>
+        Home
+      </Button>
       <img src={PokeLogo}></img>
-      <Button>Pokédex</Button>
+      <Button id="pokedex" onClick={onClickPokedex}>
+        Pokédex
+      </Button>
     </HeaderContainer>
   );
 }
