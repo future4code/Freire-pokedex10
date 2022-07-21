@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   color: white;
-  font-family: sans-serif;
 
   h1 {
     max-width: 200px;

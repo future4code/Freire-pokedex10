@@ -2,16 +2,39 @@
 import styled from 'styled-components';
 import background from './img/pokebola-bg.png'
 
+
 export const Card = styled.div`
 color: white;
 width: 420px;
 height: 180px;
-background: #729F92;
+/* background: #729F92; */
 border-radius: 12px;
 padding: 20px;
+text-transform: capitalize;
+font-weight: 100;
+font-family: "Inter", sans-serif;
+background-color: ${(props)=>{
+    console.log(props)
+    switch (props.pokemonTypes[0].type.name){
+        case "grass":
+            return '#729F92;';
+        case 'water':
+            return '#71c3ff;'
+        case "poison":
+            return '#AD61AE;'
+        case "bug":
+            return '#76A866;'
+        case "normal":
+            return '#BF9762;'
+        case "fire":
+            return '#EAAB7D;'
+        
+    }
+}};
+
 & h1{
-    font-family: sans-serif;
 font-style: normal;
+font-family: "Poppins", sans-serif;
 font-weight: 700;
 font-size: 32px;
 line-height: 39px;
@@ -19,12 +42,10 @@ margin-top: -20px;
 text-transform: capitalize;
 }
 & p{
-    font-family: sans-serif;
 font-style: normal;
-font-weight: 700;
+font-weight: 400;
 font-size: 16px;
 line-height: 19px;
-
 }
 /* & img
 {
@@ -48,37 +69,68 @@ export const CardContainer = styled.div`
 `
 
 export const PhotoContainer = styled.div `
-margin-left: 250px;
-margin-top: -150px;
-width: 193px;
-height: 193px;
+    margin-left: 250px;
+    margin-top: -155px;
+    width: 193px;
+    height: 193px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
-img{
-    max-width: 150px;
-
+.pokeimage{
+    max-width: 193px;
+    z-index: 1;
+}
+.pokebola{
+    position: absolute;
+    top: 45px;
+    right: 5px;
 }
 `
 
 
-export const  ButtonType = styled.button`
+export const  ButtonType = styled.div`
 
 padding: 5px 8px;
-margin: 5px;
-
+margin: 5px 0;
+display: flex;
+align-items: center;
 width: 91px;
 height: 31px;
-background: #70B873;
+/* background: #70B873; */
 border: 1px dashed rgba(255, 255, 255, 0.47);
 border-radius: 8px;
-font-family: sans-serif;
 font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 21px;
 color: #FFFFFF;
+background-color: ${(props)=>{
+    console.log(props)
+    switch (props.pokemonTypes[0].type.name){
+        case "grass":
+            return '#70B873;'
+        case 'water':
+            return '#33A4F5;'
+        case "poison":
+            return '#AD61AE;'
+        case "bug":
+            return '#316520;'
+        case "normal":
+            return '#8A8A8A;'
+        case "fire":
+            return '#F44900;'
+        
+    }
+}};
 & img{
 width: 17px;
 height: 19px;
+}
+
+p{
+    margin-left: 17px;
 }
 `
 
@@ -100,7 +152,7 @@ padding: 0px;
     width: 74px;
 height: 24px;
 
-font-family: sans-serif;
+
 font-style: normal;
 font-weight: 700;
 font-size: 16px;
@@ -118,6 +170,7 @@ justify-content: center; */
 align-items: center;
 padding: 4px 10px;
 cursor: pointer;
+z-index: 1;
 
 width: 146px;
 height: 38px;
