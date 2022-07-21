@@ -7,9 +7,14 @@ export const Container = styled.div`
   h1 {
     max-width: 200px;
     margin-left: 30px;
+    font-size: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 
     @media (max-width: 650px) {
-      font-size: 18px;
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
   }
 
@@ -51,6 +56,7 @@ export const Card = styled.div`
 
     img {
       width: 100%;
+      border-radius: 1vw;
     }
   }
 
@@ -68,6 +74,7 @@ export const Card = styled.div`
 
     img {
       width: 100%;
+      border-radius: 1vw;
     }
   }
 
@@ -78,11 +85,11 @@ export const Card = styled.div`
     left: 24%;
     top: 4%;
     bottom: 4%;
-    border-radius: 1.3vw;
+    border-radius: 1vw;
 
     img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 1vw;
     }
   }
 
@@ -91,7 +98,7 @@ export const Card = styled.div`
     position: absolute;
     bottom: 80%;
     top: 4%;
-    left: 52%;
+    left: 53%;
     background-color: white;
     border-radius: 1vw;
   }
@@ -107,11 +114,11 @@ export const Card = styled.div`
   }
 
   #image {
-    width: 20%;
+    width: 25%;
     position: absolute;
     bottom: 80%;
-    top: -17%;
-    left: 77%;
+    top: -22%;
+    left: 74%;
     display: flex;
     align-items: center;
 
