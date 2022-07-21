@@ -117,6 +117,7 @@ flex-direction: row;
 justify-content: center; */
 align-items: center;
 padding: 4px 10px;
+cursor: pointer;
 
 width: 146px;
 height: 38px;
