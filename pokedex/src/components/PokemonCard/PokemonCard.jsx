@@ -10,27 +10,24 @@ import {
 import bulbasaur from "./img/bulbasaur.png";
 import background from "../../components/PokemonCard/img/pokebola-bg.png";
 import folha from "./img/folha.png";
+import Pokebola from './img/pokebola-bg.png'
 
 export const PokemonCard = ({pokeInfos}) => {
   console.log(pokeInfos)
 
   const mappedPokemons = pokeInfos?.map((pokemon)=>{
     return (
-      <Card key={pokemon.id}>
+      <Card pokemonTypes = {pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
         <h1>{pokemon.name}</h1>
         {/* <img src={background} alt="" /> */}
         <PhotoContainer>
-          <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+          <img className="pokebola" src={Pokebola}/>
+          <img className="pokeimage" src={pokemon[`sprites`][`other`][`official-artwork`][`front_default`]} alt={pokemon.name} />
         </PhotoContainer>
         <ButtonDiv>
-          <ButtonType>
-            {" "}
-            <img src={folha} alt="" /> Grass{" "}
-          </ButtonType>
-          <ButtonType>
-            {" "}
-            <img src={folha} alt="" /> Grass{" "}
+          <ButtonType pokemonTypes = {pokemon.types}>
+            <img src={folha} alt="" /> <p>{pokemon.types[0].type.name}</p>
           </ButtonType>
         </ButtonDiv>
         <DetalhesContainer>

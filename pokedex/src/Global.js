@@ -5,4 +5,5 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background-color: #5e5e5e;
+    font-family: 'Poppins', sans-serif;
 }`
