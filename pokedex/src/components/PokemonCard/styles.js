@@ -93,7 +93,8 @@ export const PhotoContainer = styled.div `
 export const  ButtonType = styled.div`
 
 padding: 5px 8px;
-margin: 5px 0;
+margin-right: 8px;
+margin-top: 5px;
 display: flex;
 align-items: center;
 width: 91px;
@@ -107,8 +108,8 @@ font-size: 14px;
 line-height: 21px;
 color: #FFFFFF;
 background-color: ${(props)=>{
-    console.log(props)
-    switch (props.pokemonTypes[0].type.name){
+    console.log("style",props.pokemonTypes)
+    switch (props.pokemonTypes){
         case "grass":
             return '#70B873;'
         case 'water':
@@ -121,6 +122,8 @@ background-color: ${(props)=>{
             return '#8A8A8A;'
         case "fire":
             return '#F44900;'
+        case "flying":
+            return '#6892B0'
         
     }
 }};
