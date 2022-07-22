@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Router } from "./routes/Router";
+import { Router } from "./Routes/Router";
 import { GlobalStyle } from "./Global";
 import { ContextPokemon } from "./ContextPokemon";
 

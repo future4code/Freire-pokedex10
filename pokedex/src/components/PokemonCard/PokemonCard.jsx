@@ -12,12 +12,16 @@ import background from "../../components/PokemonCard/img/pokebola-bg.png";
 import folha from "./img/folha.png";
 import Pokebola from "./img/pokebola-bg.png";
 import { useNavigate } from "react-router-dom";
-import { goToDetails } from "../../routes/Coordinator";
+import { goToDetails } from "../../Routes/coordinator";
+import { ContextPokemon } from "../../ContextPokemon";
+import React, {useContext} from "react";
+
 
 export const PokemonCard = (props) => {
   const navigate = useNavigate();
+  const pokeInfos = useContext(ContextPokemon)
 
-  const mappedPokemons = props.pokeInfos?.map((pokemon) => {
+  const mappedPokemons = pokeInfos.pokeInfos && pokeInfos.pokeInfos?.map((pokemon) => {
     return (
       <Card pokemonTypes={pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
@@ -51,5 +55,7 @@ export const PokemonCard = (props) => {
     );
   });
 
-  return <CardContainer>{mappedPokemons}</CardContainer>;
+  return <CardContainer>
+    {mappedPokemons}
+    </CardContainer>;
 };
