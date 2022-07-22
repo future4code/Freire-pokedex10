@@ -1,56 +1,56 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Card, Container, ContainerArea, ButtonDiv, ButtonType } from "./style";
+import {
+  Card,
+  Content,
+  ContentArea,
+  HeaderContainer,
+  PokedexButton,
+  HomeButton,
+} from "./style";
 import front from "./img/front.png";
 import back from "./img/back.png";
 import stats from "./img/stats.png";
 import bulbasaur from "./img/bulbasaur.png";
 import folha from "./img/folha.png";
+import PokeLogo from "../../img/logo.png";
+import { goToHome } from "../../routes/Coordinator";
+import { IoIosArrowBack } from "react-icons/io";
 
 function Details() {
-  return (
-    <Container>
-      <h1>Detalhes</h1>
-      <ContainerArea>
-        <Card>
-          <div id="front">
-            <img src={front} alt="front" />
-          </div>
-          <div id="back">
-            <img src={back} alt="back" />
-          </div>
-          <div id="stats">
-            <img src={stats} alt="stats" />
-          </div>
-          <div id="title"></div>
-          <div id="moves"></div>
-          <div id="image">
-            <img src={bulbasaur} alt="bulbasaur" />
-          </div>
-        </Card>
-      </ContainerArea>
-    </Container>
+  const navigate = useNavigate();
 
-    /* <h1>Detalhes</h1>
-      <Card>
-        <div id="front">
-          <img src={front} alt="front" />
-        </div>
-        <div id="back">
-          <img src={back} alt="back" />
-        </div>
-        <div id="stats">
-          <img src={stats} alt="stats" />
-        </div>
-        <div id="title"></div>
-        <div id="moves"></div>
-        <div id="image">
-          <img src={bulbasaur} alt="bulbasaur" />
-        </div>
-      </Card>
-    </Container> */
+  return (
+    <div>
+      <HeaderContainer>
+        <HomeButton onClick={() => goToHome(navigate)}>
+          <IoIosArrowBack /> <span>Todos Pokémons</span>
+        </HomeButton>
+        <img src={PokeLogo}></img>
+        <PokedexButton>Pokédex</PokedexButton>
+      </HeaderContainer>
+      <Content>
+        <h1>Detalhes</h1>
+        <ContentArea>
+          <Card>
+            <div id="front">
+              <img src={front} alt="front" />
+            </div>
+            <div id="back">
+              <img src={back} alt="back" />
+            </div>
+            <div id="stats">
+              <img src={stats} alt="stats" />
+            </div>
+            <div id="title"></div>
+            <div id="moves"></div>
+            <div id="image">
+              <img src={bulbasaur} alt="bulbasaur" />
+            </div>
+          </Card>
+        </ContentArea>
+      </Content>
+    </div>
   );
 }
 
