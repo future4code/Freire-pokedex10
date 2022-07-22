@@ -1,64 +1,39 @@
-
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
-import axios from "axios"
-import {useNavigate} from "react-router-dom"
-import { PokemonCard } from '../../components/PokemonCard/PokemonCard';
-import { PokemonListContainer } from './style';
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { PokemonCard } from "../../components/PokemonCard/PokemonCard";
+import {
+  Container,
+  PokemonListContainer,
+  HeaderContainer,
+  PokedexButton,
+  HomeButton,
+} from "./style";
+import PokeLogo from "../../img/logo.png";
+import { goToPokedex } from "../../routes/Coordinator";
+import { IoIosArrowBack } from "react-icons/io";
+import { ContextPokemon } from "../../ContextPokemon";
 
 function Home() {
-
-  const [pokemons, setPokemons] = useState([])
-  const [pokeInfos, setPokeInfos] = useState([])
-
-const getAllPokemons = () =>{
-  axios.get('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-  .then((response)=>{
-    setPokemons(response.data.results)
-    console.log(response.data.results)
-    // alert('SUCESSO')
-  })
-    .catch((error)=>{
-      console.log(error)
-      alert('erro')
-  })
-  
-}
-
-useEffect(()=>{
-  getAllPokemons()
-},[])
-
-const listCards = pokemons.map((item)=>{
-  return <PokemonCard nome= {item.name}></PokemonCard>
-})
-
-useEffect(() =>{
-  const data = [];
-  pokemons.forEach((pokemon)=>{
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
-    .then((response)=>{
-      data.push(response.data)
-      if (data.length === 20) {
-        const sortPokemons = data.sort((a, b) => {
-          return a.id - b.id
-      })
-        setPokeInfos(sortPokemons);
-        console.log(sortPokemons)
-      }
-    })
-    .catch((error) =>{
-      console.log(error)
-    })
-  })
-},[pokemons])
-
+  const navigate = useNavigate();
+  const pokeInfos = useContext(ContextPokemon);
 
   return (
-    <PokemonListContainer>
-    <PokemonCard pokeInfos = {pokeInfos}></PokemonCard>
-    {/* {listCards} */}
-    </PokemonListContainer>
+    <Container>
+      <HeaderContainer>
+        <HomeButton>
+          <IoIosArrowBack /> <span>Todos Pokémons</span>
+        </HomeButton>
+        <img src={PokeLogo}></img>
+        <PokedexButton onClick={() => goToPokedex(navigate)}>
+          Pokédex
+        </PokedexButton>
+      </HeaderContainer>
+      <PokemonListContainer>
+        <PokemonCard pokeInfos={pokeInfos}></PokemonCard>
+        {/* {listCards} */}
+      </PokemonListContainer>
+    </Container>
   );
 }
 

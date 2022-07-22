@@ -1,12 +1,24 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import axios from "axios"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { HeaderContainer, HomeButton, PokedexButton } from "./style";
+import PokeLogo from "../../img/logo.png";
+import { goToHome } from "../../routes/Coordinator";
+import { IoIosArrowBack } from "react-icons/io";
 
 function Pokedex() {
+  const navigate = useNavigate();
+
   return (
-    <div>Pokedex</div>
-  )
+    <div>
+      <HeaderContainer>
+        <HomeButton onClick={() => goToHome(navigate)}>
+          <IoIosArrowBack /> <span>Todos Pokémons</span>
+        </HomeButton>
+        <img src={PokeLogo}></img>
+        <PokedexButton>Pokédex</PokedexButton>
+      </HeaderContainer>
+      Pokedex
+    </div>
+  );
 }
 
-export default Pokedex
+export default Pokedex;

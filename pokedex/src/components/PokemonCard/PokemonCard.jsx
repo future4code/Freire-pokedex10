@@ -5,46 +5,51 @@ import {
   ButtonType,
   DetalhesContainer,
   ButtonDiv,
-  CardContainer
+  CardContainer,
 } from "./styles";
 import bulbasaur from "./img/bulbasaur.png";
 import background from "../../components/PokemonCard/img/pokebola-bg.png";
 import folha from "./img/folha.png";
-import Pokebola from './img/pokebola-bg.png'
+import Pokebola from "./img/pokebola-bg.png";
+import { useNavigate } from "react-router-dom";
+import { goToDetails } from "../../routes/Coordinator";
 
-export const PokemonCard = ({pokeInfos}) => {
-  console.log(pokeInfos)
+export const PokemonCard = (props) => {
+  const navigate = useNavigate();
 
-  const mappedPokemons = pokeInfos?.map((pokemon)=>{
+  const mappedPokemons = props.pokeInfos?.map((pokemon) => {
     return (
-      <Card pokemonTypes = {pokemon.types} key={pokemon.id}>
+      <Card pokemonTypes={pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
         <h1>{pokemon.name}</h1>
         {/* <img src={background} alt="" /> */}
         <PhotoContainer>
-          <img className="pokebola" src={Pokebola}/>
-          <img className="pokeimage" src={pokemon[`sprites`][`other`][`official-artwork`][`front_default`]} alt={pokemon.name} />
+          <img className="pokebola" src={Pokebola} />
+          <img
+            className="pokeimage"
+            src={
+              pokemon[`sprites`][`other`][`official-artwork`][`front_default`]
+            }
+            alt={pokemon.name}
+          />
         </PhotoContainer>
         <ButtonDiv>
-          {pokemon.types && pokemon.types.map(type =>{
-            console.log("tipo", type.type.name)
-            return(
-              <ButtonType pokemonTypes = {type.type.name}>
-                <img src={folha} alt="" /> <p>{type.type.name}</p>
-              </ButtonType>
-            )
-          })}
+          {pokemon.types &&
+            pokemon.types.map((type) => {
+              return (
+                <ButtonType pokemonTypes={type.type.name}>
+                  <img src={folha} alt="" /> <p>{type.type.name}</p>
+                </ButtonType>
+              );
+            })}
         </ButtonDiv>
         <DetalhesContainer>
-          <p>Detalhes</p> <button>Capturar!</button>
+          <p onClick={() => goToDetails(navigate)}>Detalhes</p>
+          <button>Capturar!</button>
         </DetalhesContainer>
       </Card>
-    )
-  })
+    );
+  });
 
-  return (
-    <CardContainer>
-      {mappedPokemons}
-    </CardContainer>
-  );
+  return <CardContainer>{mappedPokemons}</CardContainer>;
 };
