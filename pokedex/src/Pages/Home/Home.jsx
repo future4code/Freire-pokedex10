@@ -40,8 +40,11 @@ useEffect(() =>{
     .then((response)=>{
       data.push(response.data)
       if (data.length === 20) {
-        setPokeInfos(data);
-        console.log(data)
+        const sortPokemons = data.sort((a, b) => {
+          return a.id - b.id
+      })
+        setPokeInfos(sortPokemons);
+        console.log(sortPokemons)
       }
     })
     .catch((error) =>{

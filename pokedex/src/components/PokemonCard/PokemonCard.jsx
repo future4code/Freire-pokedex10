@@ -26,9 +26,14 @@ export const PokemonCard = ({pokeInfos}) => {
           <img className="pokeimage" src={pokemon[`sprites`][`other`][`official-artwork`][`front_default`]} alt={pokemon.name} />
         </PhotoContainer>
         <ButtonDiv>
-          <ButtonType pokemonTypes = {pokemon.types}>
-            <img src={folha} alt="" /> <p>{pokemon.types[0].type.name}</p>
-          </ButtonType>
+          {pokemon.types && pokemon.types.map(type =>{
+            console.log("tipo", type.type.name)
+            return(
+              <ButtonType pokemonTypes = {type.type.name}>
+                <img src={folha} alt="" /> <p>{type.type.name}</p>
+              </ButtonType>
+            )
+          })}
         </ButtonDiv>
         <DetalhesContainer>
           <p>Detalhes</p> <button>Capturar!</button>
