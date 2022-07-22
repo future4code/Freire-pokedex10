@@ -13,11 +13,19 @@ import folha from "./img/folha.png";
 import Pokebola from "./img/pokebola-bg.png";
 import { useNavigate } from "react-router-dom";
 import { goToDetails } from "../../routes/Coordinator";
+import { useContext } from "react";
+import { ContextPokemon } from "../../ContextPokemon";
 
-export const PokemonCard = (props) => {
+export const PokemonCard = () => {
   const navigate = useNavigate();
+  const { pokeInfos, setPokeId } = useContext(ContextPokemon);
 
-  const mappedPokemons = props.pokeInfos?.map((pokemon) => {
+  const onClickDetails = (id) => {
+    setPokeId(id);
+    goToDetails(navigate);
+  };
+
+  const mappedPokemons = pokeInfos?.map((pokemon) => {
     return (
       <Card pokemonTypes={pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
@@ -44,7 +52,7 @@ export const PokemonCard = (props) => {
             })}
         </ButtonDiv>
         <DetalhesContainer>
-          <p onClick={() => goToDetails(navigate)}>Detalhes</p>
+          <p onClick={() => onClickDetails(pokemon.id)}>Detalhes</p>
           <button>Capturar!</button>
         </DetalhesContainer>
       </Card>
