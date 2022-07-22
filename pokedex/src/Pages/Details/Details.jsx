@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
@@ -16,9 +16,26 @@ import folha from "./img/folha.png";
 import PokeLogo from "../../img/logo.png";
 import { goToHome } from "../../routes/Coordinator";
 import { IoIosArrowBack } from "react-icons/io";
+import { ContextPokemon } from "../../ContextPokemon";
+import axios from "axios";
 
 function Details() {
   const navigate = useNavigate();
+  const { pokeId } = useContext(ContextPokemon);
+  // const [pokeDetails, setPokeDetails]
+
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)
+      .then((response) => {
+        console.log(response);
+        // alert('SUCESSO')
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("erro");
+      });
+  }, []);
 
   return (
     <div>
