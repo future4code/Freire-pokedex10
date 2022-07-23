@@ -70,7 +70,7 @@ export const Card = styled.div`
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    border-radius: ;
+    border-radius: 8px;
 
     img {
       width: 100%;
@@ -105,11 +105,24 @@ export const Card = styled.div`
     top: 4%;
     bottom: 4%;
     border-radius: 1vw;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: grey;
+    text-align: center;
+    & h1 {
+    width: 87px;
+    height: 29px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+    font-size: 24px;
+      margin-bottom: 20px;
+      margin-top: 18px;
+      margin-left: 18px;
+     color: #000000;
+      }
 
-    img {
-      width: 100%;
-      border-radius: 1vw;
-    }
+   
   }
 
   #title {
@@ -148,24 +161,19 @@ export const Card = styled.div`
     left: 52%;
     border-radius: 1.3vw;
     color: black;
+    & h1 {
+    width: 87px;
+    height: 29px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+    font-size: 24px;
+      margin-bottom: -20px;
+      margin-top: 18px;
+      margin-left: 18px;
+     color: #000000;
+      }
   }
-  & h1 {
-    position: absolute;
-width: 87px;
-height: 29px;
-left: 789px;
-top: 202px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-
-color: #000000;
-  }
+  
 
   #image {
     width: 25%;
@@ -254,18 +262,18 @@ padding: 10px;
 
 
 //position: absolute;
-width: 102px;
-height: 37px;
+width: fit-content;
+height: 20px;
 /* left: 814px;
 top: 599px; */
 
 background: #ECECEC;
 border: 1px dashed rgba(0, 0, 0, 0.14);
 border-radius: 12px;
+margin: 18px;
 
-
-font-family: 'Montserrat';
-font-style: normal;
+font-family: 'Poppins', sans-serif;
+list-style: none;
 font-weight: 400;
 font-size: 14px;
 color: black

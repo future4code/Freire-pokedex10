@@ -25,35 +25,37 @@ function Details() {
   const navigate = useNavigate();
   const { pokeId } = useContext(ContextPokemon);
   const [pokeDetails, setPokeDetails] = useState({})
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     axios
       .get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)
       .then((response) => {
-        setIsLoading(true)
+        //setIsLoading(true)
         console.log('respostaPI',response.data);
         setPokeDetails(response.data)
         setIsError(false)
        
       })
       .catch((error) => {
-        setIsLoading(true)
+       // setIsLoading(true)
         console.log(error);
         alert("erro");
         setIsError(true)
       })
-       .finally(() => setIsLoading(false));
+       //.finally(() => setIsLoading(false));
   }, []);
 
   return (
     <div>
-       {isLoading && <h1>Carregando...</h1>}
-       {isError && <h1>Erro 404</h1>}
-       {(pokeDetails === null || undefined ) && <h1>Erro</h1>}
+       {/* {isLoading && <h1>Carregando...</h1>}
+      
        {console.log(pokeDetails)}
-        { !isLoading && !isError && (
+        { !isLoading &&  */}
+
+        {isError && <h1>Erro 404</h1>}
+        {!isError && (
           < div>
  
       <HeaderContainer>
@@ -71,25 +73,32 @@ function Details() {
              
             <img  
               src={
-              
-               pokeDetails[`sprites`][`front_default`]}
+                pokeDetails.sprites &&
+               pokeDetails?.sprites?.front_default
+              }
             
-            alt={pokeDetails.name} />
+            alt={pokeDetails && pokeDetails?.name} />
             </div>
             <div id="back">
             <img 
               src={
-               
-              pokeDetails[`sprites`][`back_default`]
+               pokeDetails.sprites &&
+              pokeDetails?.sprites?.back_default
             }
             alt={pokeDetails.name} />
             </div>
             <div id="stats">
-              <img src={stats} alt="stats" />
+              <h1>Stats:</h1>
+              { pokeDetails.stats &&
+              pokeDetails?.stats &&
+            pokeDetails.stats.map((item)=> {
+              return  (<div><p>{item.stat.name} <b> {item.base_stat}</b></p> <hr></hr> </div>)
+              
+            })}
             </div>
             <div id="title">
             <p>#0{pokeDetails.id}</p>
-            <h1>{ pokeDetails.name.toUpperCase()}</h1>
+            <h1>{ pokeDetails && pokeDetails?.name?.toUpperCase()}</h1>
             
             <ButtonDiv>
           {pokeDetails.types &&
@@ -106,7 +115,7 @@ function Details() {
                <h1>Moves:</h1>
                <br />
               { pokeDetails.moves &&
-              pokeDetails.moves.splice(10) &&
+              pokeDetails.moves.splice(5) &&
             pokeDetails.moves.map((item)=> {
               return <TypeItem>{item.move.name}</TypeItem>
             })}
@@ -114,8 +123,8 @@ function Details() {
             <div id="image">
               <img 
               src={
-                
-              pokeDetails[`sprites`][`other`][`official-artwork`][`front_default`]
+                pokeDetails &&
+              pokeDetails?.sprites?.other?.[`official-artwork`][`front_default`]
             }
             alt={pokeDetails.name} />
             </div>
