@@ -158,7 +158,7 @@ export const PokedexButton = styled.button`
     cursor: pointer;
   }
 
-  @media (max-width: 7820px) {
+  @media (max-width: 820px) {
     width: 60px;
     height: 40px;
     font-size: 13px;
