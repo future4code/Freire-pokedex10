@@ -37,7 +37,26 @@ export const Card = styled.div`
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #729f92;
+  background-color: 
+  ${(props) => {
+    if (props.pokemonTypes) 
+    switch ( props.pokemonTypes[0].type.name) {
+      case "grass":
+        return "#729F92;";
+      case "water":
+        return "#71c3ff;";
+      case "poison":
+        return "#AD61AE;";
+      case "bug":
+        return "#76A866;";
+      case "normal":
+        return "#BF9762;";
+      case "fire":
+        return "#EAAB7D;";
+      default:
+        return 'pink'
+    }}} ; 
+
   margin-bottom: 50px;
   border-radius: 2vw;
 
@@ -51,11 +70,12 @@ export const Card = styled.div`
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    border-radius: 1vw;
+    border-radius: ;
 
     img {
       width: 100%;
       border-radius: 1vw;
+
     }
   }
 
@@ -98,8 +118,25 @@ export const Card = styled.div`
     bottom: 80%;
     top: 4%;
     left: 53%;
-    background-color: white;
-    border-radius: 1vw;
+    
+    color: white;
+  }& h1 {
+    font-style: normal;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-top: -20px;
+
+    margin-left: 0px;
+    
+    text-transform: capitalize;
+  }
+  & p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
   }
 
   #moves {
@@ -110,6 +147,24 @@ export const Card = styled.div`
     top: 27%;
     left: 52%;
     border-radius: 1.3vw;
+    color: black;
+  }
+  & h1 {
+    position: absolute;
+width: 87px;
+height: 29px;
+left: 789px;
+top: 202px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 29px;
+/* identical to box height */
+
+
+color: #000000;
   }
 
   #image {
@@ -191,3 +246,27 @@ export const HomeButton = styled.div`
     font-size: 12px;
   }
 `;
+
+export const TypeItem = styled.li`
+
+
+padding: 10px;
+
+
+//position: absolute;
+width: 102px;
+height: 37px;
+/* left: 814px;
+top: 599px; */
+
+background: #ECECEC;
+border: 1px dashed rgba(0, 0, 0, 0.14);
+border-radius: 12px;
+
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+color: black
+`
