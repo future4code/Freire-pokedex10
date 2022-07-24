@@ -37,7 +37,26 @@ export const Card = styled.div`
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: #729f92;
+  background-color: 
+  ${(props) => {
+    if (props.pokemonTypes) 
+    switch ( props.pokemonTypes[0].type.name) {
+      case "grass":
+        return "#729F92;";
+      case "water":
+        return "#71c3ff;";
+      case "poison":
+        return "#AD61AE;";
+      case "bug":
+        return "#76A866;";
+      case "normal":
+        return "#BF9762;";
+      case "fire":
+        return "#EAAB7D;";
+      default:
+        return 'pink'
+    }}} ; 
+
   margin-bottom: 50px;
   border-radius: 2vw;
 
@@ -51,11 +70,12 @@ export const Card = styled.div`
     margin-bottom: 15px;
     display: flex;
     align-items: center;
-    border-radius: 1vw;
+    border-radius: 8px;
 
     img {
       width: 100%;
       border-radius: 1vw;
+
     }
   }
 
@@ -85,11 +105,24 @@ export const Card = styled.div`
     top: 4%;
     bottom: 4%;
     border-radius: 1vw;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: grey;
+    text-align: center;
+    & h1 {
+    width: 87px;
+    height: 29px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+    font-size: 24px;
+      margin-bottom: 20px;
+      margin-top: 18px;
+      margin-left: 18px;
+     color: #000000;
+      }
 
-    img {
-      width: 100%;
-      border-radius: 1vw;
-    }
+   
   }
 
   #title {
@@ -98,8 +131,25 @@ export const Card = styled.div`
     bottom: 80%;
     top: 4%;
     left: 53%;
-    background-color: white;
-    border-radius: 1vw;
+    
+    color: white;
+  }& h1 {
+    font-style: normal;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    margin-top: -20px;
+
+    margin-left: 0px;
+    
+    text-transform: capitalize;
+  }
+  & p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
   }
 
   #moves {
@@ -110,7 +160,20 @@ export const Card = styled.div`
     top: 27%;
     left: 52%;
     border-radius: 1.3vw;
+    color: black;
+    & h1 {
+    width: 87px;
+    height: 29px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 1000;
+    font-size: 24px;
+      margin-bottom: -20px;
+      margin-top: 18px;
+      margin-left: 18px;
+     color: #000000;
+      }
   }
+  
 
   #image {
     width: 25%;
@@ -191,3 +254,27 @@ export const HomeButton = styled.div`
     font-size: 12px;
   }
 `;
+
+export const TypeItem = styled.li`
+
+
+padding: 10px;
+
+
+//position: absolute;
+width: fit-content;
+height: 20px;
+/* left: 814px;
+top: 599px; */
+
+background: #ECECEC;
+border: 1px dashed rgba(0, 0, 0, 0.14);
+border-radius: 12px;
+margin: 18px;
+
+font-family: 'Poppins', sans-serif;
+list-style: none;
+font-weight: 400;
+font-size: 14px;
+color: black
+`
