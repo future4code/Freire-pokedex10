@@ -8,6 +8,7 @@ import {
   PokedexButton,
   HomeButton,
   TypeItem,
+
   Progress,
   Bar
 } from "./style";
@@ -26,7 +27,7 @@ import axios from "axios";
 function Details() {
   const navigate = useNavigate();
   const { pokeId } = useContext(ContextPokemon);
-  const [pokeDetails, setPokeDetails] = useState({})
+  const [pokeDetails, setPokeDetails] = useState({});
   // const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -35,26 +36,26 @@ function Details() {
       .get(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)
       .then((response) => {
         //setIsLoading(true)
-        console.log('respostaPI',response.data);
-        setPokeDetails(response.data)
-        setIsError(false)
-       
+        console.log("respostaPI", response.data);
+        setPokeDetails(response.data);
+        setIsError(false);
       })
       .catch((error) => {
-       // setIsLoading(true)
+        // setIsLoading(true)
         console.log(error);
         alert("erro");
-        setIsError(true)
-      })
-       //.finally(() => setIsLoading(false));
+        setIsError(true);
+      });
+    //.finally(() => setIsLoading(false));
   }, []);
 
   return (
     <div>
-       {/* {isLoading && <h1>Carregando...</h1>}
+      {/* {isLoading && <h1>Carregando...</h1>}
       
        {console.log(pokeDetails)}
         { !isLoading &&  */}
+
 
         {isError && <h1>Erro 404</h1>}
         {!isError && (
@@ -155,6 +156,7 @@ function Details() {
       </Content>
       </div>
         )}
+
     </div>
   );
 }

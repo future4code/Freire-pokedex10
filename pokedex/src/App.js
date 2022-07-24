@@ -3,11 +3,13 @@ import axios from "axios";
 import { Router } from "./routes/Router";
 import { GlobalStyle } from "./Global";
 import { ContextPokemon } from "./ContextPokemon";
+import { goToDetails } from "./routes/Coordinator";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [pokeInfos, setPokeInfos] = useState([]);
   const [pokeId, setPokeId] = useState();
+  const [pokedex, setPokedex] = useState([]);
 
   const getAllPokemons = () => {
     axios
@@ -46,8 +48,44 @@ function App() {
     });
   }, [pokemons]);
 
+  const capturePokemon = (filterPokemon) => {
+    setPokeInfos(
+      pokeInfos.filter((pokemon) => pokemon.name !== filterPokemon.name)
+    );
+    setPokedex([...pokedex, filterPokemon]);
+  };
+  console.log("pokedex", pokedex);
+
+  const removePokemon = (filterPokemon) => {
+    setPokedex(
+      pokedex.filter((pokemon) => pokemon.name !== filterPokemon.name)
+    );
+    setPokeInfos([...pokeInfos, filterPokemon]);
+  };
+
+  const onClickDetails = (id, navigate) => {
+    setPokeId(id);
+    goToDetails(navigate);
+  };
+
+  useEffect(() => {
+    pokeInfos.sort((a, b) => {
+      return a.id - b.id;
+    });
+  }, [pokeInfos]);
+
   return (
-    <ContextPokemon.Provider value={{ pokeInfos, pokeId, setPokeId }}>
+    <ContextPokemon.Provider
+      value={{
+        removePokemon,
+        onClickDetails,
+        pokedex,
+        capturePokemon,
+        pokeInfos,
+        pokeId,
+        setPokeId,
+      }}
+    >
       <Router />
       <GlobalStyle />
     </ContextPokemon.Provider>

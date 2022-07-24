@@ -36,6 +36,10 @@ export const Card = styled.div`
     line-height: 39px;
     margin-top: -20px;
     text-transform: capitalize;
+
+    @media (max-width: 500px) {
+      font-size: 26px;
+    }
   }
   & p {
     font-style: normal;
@@ -52,6 +56,10 @@ transform: rotate(30deg);
 opacity: 0.17;
 }
  */
+
+  @media (max-width: 500px) {
+    width: 300px;
+  }
 `;
 export const CardContainer = styled.div`
   display: flex;
@@ -83,6 +91,21 @@ export const PhotoContainer = styled.div`
     top: 45px;
     right: 5px;
   }
+
+  @media (max-width: 500px) {
+    width: 80px;
+
+    .pokeimage {
+      width: 153px;
+      margin-right: 80px;
+    }
+
+    .pokebola {
+      width: 180px;
+      top: 50px;
+      right: 10px;
+    }
+  }
 `;
 
 export const ButtonType = styled.div`
@@ -100,6 +123,7 @@ export const ButtonType = styled.div`
   font-size: 14px;
   line-height: 21px;
   color: #ffffff;
+  z-index: 5;
   background-color: ${(props) => {
     switch (props.pokemonTypes) {
       case "grass":
