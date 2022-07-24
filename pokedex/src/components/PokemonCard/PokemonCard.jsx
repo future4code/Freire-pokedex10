@@ -15,14 +15,15 @@ import { ContextPokemon } from "../../ContextPokemon";
 
 export const PokemonCard = () => {
   const navigate = useNavigate();
-  const {capturePokemon, pokeInfos, setPokeId, onClickDetails } = useContext(ContextPokemon);
+  const { capturePokemon, pokeInfos, setPokeId, onClickDetails } =
+    useContext(ContextPokemon);
 
   const mappedPokemons = pokeInfos?.map((pokemon) => {
     return (
       <Card pokemonTypes={pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
         <h1>{pokemon.name}</h1>
-       
+
         <PhotoContainer>
           <img className="pokebola" src={Pokebola} />
           <img
@@ -45,7 +46,7 @@ export const PokemonCard = () => {
         </ButtonDiv>
         <DetalhesContainer>
           <p onClick={() => onClickDetails(pokemon.id, navigate)}>Detalhes</p>
-          <button onClick={()=>capturePokemon(pokemon)}>Capturar!</button>
+          <button onClick={() => capturePokemon(pokemon)}>Capturar!</button>
         </DetalhesContainer>
       </Card>
     );

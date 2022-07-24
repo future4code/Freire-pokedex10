@@ -10,23 +10,22 @@ import {
 import { useNavigate } from "react-router-dom";
 import { HeaderContainer, HomeButton, PokedexButton } from "./style";
 import PokeLogo from "../../img/logo.png";
-import { goToHome } from "../../Routes/coordinator";
+import { goToHome } from "../../routes/Coordinator";
 import { IoIosArrowBack } from "react-icons/io";
-import React, {useContext} from "react"
+import React, { useContext } from "react";
 import { ContextPokemon } from "../../ContextPokemon";
 import Pokebola from "../../components/PokemonCard/img/pokebola-bg.png";
 
 function Pokedex() {
   const navigate = useNavigate();
-  const {pokedex, onClickDetails, removePokemon} = useContext(ContextPokemon);
+  const { pokedex, onClickDetails, removePokemon } = useContext(ContextPokemon);
 
-  
   const mappedPokemons = pokedex?.map((pokemon) => {
     return (
       <Card pokemonTypes={pokemon.types} key={pokemon.id}>
         <p>#0{pokemon.id}</p>
         <h1>{pokemon.name}</h1>
-       
+
         <PhotoContainer>
           <img className="pokebola" src={Pokebola} />
           <img
@@ -63,9 +62,7 @@ function Pokedex() {
         <img src={PokeLogo}></img>
         <PokedexButton>Pokédex</PokedexButton>
       </HeaderContainer>
-      <CardContainer>
-        {mappedPokemons}
-      </CardContainer>
+      <CardContainer>{mappedPokemons}</CardContainer>
     </div>
   );
 }
