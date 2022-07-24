@@ -10,7 +10,7 @@ import {
   HomeButton,
 } from "./style";
 import PokeLogo from "../../img/logo.png";
-import { goToPokedex } from "../../routes/Coordinator";
+import { goToPokedex } from "../../Routes/coordinator";
 import { IoIosArrowBack } from "react-icons/io";
 import { ContextPokemon } from "../../ContextPokemon";
 

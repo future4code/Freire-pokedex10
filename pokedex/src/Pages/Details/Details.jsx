@@ -16,7 +16,7 @@ import stats from "./img/stats.png";
 import bulbasaur from "./img/bulbasaur.png";
 import folha from "./img/folha.png";
 import PokeLogo from "../../img/logo.png";
-import { goToHome } from "../../routes/Coordinator";
+import { goToHome } from "../../Routes/coordinator";
 import { IoIosArrowBack } from "react-icons/io";
 import { ContextPokemon } from "../../ContextPokemon";
 import axios from "axios";
