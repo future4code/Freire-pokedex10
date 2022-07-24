@@ -7,7 +7,9 @@ import {
   HeaderContainer,
   PokedexButton,
   HomeButton,
-  TypeItem
+  TypeItem,
+  Progress,
+  Bar
 } from "./style";
 import { ButtonType, ButtonDiv } from "../../components/PokemonCard/styles";
 import front from "./img/front.png";
@@ -88,13 +90,33 @@ function Details() {
             alt={pokeDetails.name} />
             </div>
             <div id="stats">
-              <h1>Stats:</h1>
-              { pokeDetails.stats &&
-              pokeDetails?.stats &&
-            pokeDetails.stats.map((item)=> {
-              return  (<div><p>{item.stat.name} <b> {item.base_stat}</b></p> <hr></hr> </div>)
               
-            })}
+              <h1>Base stats:</h1>
+           
+              { 
+                  <table>
+          
+                <tr><td>HP</td> <td><b>  {pokeDetails.stats && pokeDetails?.stats[0]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[0]?.base_stat}>.</Progress></Bar></td> </tr> 
+
+                <tr> <td>Attack</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[1]?.base_stat}</b></td> 
+                <td><Bar> <Progress  width = {pokeDetails.stats && pokeDetails?.stats[1]?.base_stat}>.</Progress></Bar></td> </tr>
+
+                <tr><td>Defense</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[2]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[2]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>SP. Atk</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[3]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[3]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>SP Def</td> <td><b>{pokeDetails.stats && pokeDetails?.stats[4]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[4]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>Speed</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[5]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[5]?.base_stat}>.</Progress></Bar></td></tr>
+                  </table>
+               
+              }
+        
             </div>
             <div id="title">
             <p>#0{pokeDetails.id}</p>
