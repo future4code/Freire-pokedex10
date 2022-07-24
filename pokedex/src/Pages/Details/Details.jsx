@@ -8,6 +8,9 @@ import {
   PokedexButton,
   HomeButton,
   TypeItem,
+
+  Progress,
+  Bar
 } from "./style";
 import { ButtonType, ButtonDiv } from "../../components/PokemonCard/styles";
 import front from "./img/front.png";
@@ -53,91 +56,107 @@ function Details() {
        {console.log(pokeDetails)}
         { !isLoading &&  */}
 
-      {isError && <h1>Erro 404</h1>}
-      {!isError && (
-        <div>
-          <HeaderContainer>
-            <HomeButton onClick={() => goToHome(navigate)}>
-              <IoIosArrowBack /> <span>Todos Pokémons</span>
-            </HomeButton>
-            <img src={PokeLogo}></img>
-            <PokedexButton>Pokédex</PokedexButton>
-          </HeaderContainer>
-          <Content>
-            <h1>Detalhes</h1>
-            <ContentArea>
-              <Card pokemonTypes={pokeDetails.types}>
-                <div id="front">
-                  <img
-                    src={
-                      pokeDetails.sprites && pokeDetails?.sprites?.front_default
-                    }
-                    alt={pokeDetails && pokeDetails?.name}
-                  />
-                </div>
-                <div id="back">
-                  <img
-                    src={
-                      pokeDetails.sprites && pokeDetails?.sprites?.back_default
-                    }
-                    alt={pokeDetails.name}
-                  />
-                </div>
-                <div id="stats">
-                  <h1>Stats:</h1>
-                  {pokeDetails.stats &&
-                    pokeDetails?.stats &&
-                    pokeDetails.stats.map((item) => {
-                      return (
-                        <div>
-                          <p>
-                            {item.stat.name} <b> {item.base_stat}</b>
-                          </p>{" "}
-                          <hr></hr>{" "}
-                        </div>
-                      );
-                    })}
-                </div>
-                <div id="title">
-                  <p>#0{pokeDetails.id}</p>
-                  <h1>{pokeDetails && pokeDetails?.name?.toUpperCase()}</h1>
 
-                  <ButtonDiv>
-                    {pokeDetails.types &&
-                      pokeDetails.types.map((type) => {
-                        return (
-                          <ButtonType pokemonTypes={type.type.name}>
-                            <img src={folha} alt="" /> <p>{type.type.name}</p>
-                          </ButtonType>
-                        );
-                      })}
-                  </ButtonDiv>
-                </div>
-                <div id="moves">
-                  <h1>Moves:</h1>
-                  <br />
-                  {pokeDetails.moves &&
-                    pokeDetails.moves.splice(5) &&
-                    pokeDetails.moves.map((item) => {
-                      return <TypeItem>{item.move.name}</TypeItem>;
-                    })}
-                </div>
-                <div id="image">
-                  <img
-                    src={
-                      pokeDetails &&
-                      pokeDetails?.sprites?.other?.[`official-artwork`][
-                        `front_default`
-                      ]
-                    }
-                    alt={pokeDetails.name}
-                  />
-                </div>
-              </Card>
-            </ContentArea>
-          </Content>
-        </div>
-      )}
+        {isError && <h1>Erro 404</h1>}
+        {!isError && (
+          < div>
+ 
+      <HeaderContainer>
+        <HomeButton onClick={() => goToHome(navigate)}>
+          <IoIosArrowBack /> <span>Todos Pokémons</span>
+        </HomeButton>
+        <img src={PokeLogo}></img>
+        <PokedexButton>Pokédex</PokedexButton>
+      </HeaderContainer>
+      <Content>
+        <h1>Detalhes</h1>
+        <ContentArea>
+          <Card pokemonTypes={pokeDetails.types}>
+            <div id="front">
+             
+            <img  
+              src={
+                pokeDetails.sprites &&
+               pokeDetails?.sprites?.front_default
+              }
+            
+            alt={pokeDetails && pokeDetails?.name} />
+            </div>
+            <div id="back">
+            <img 
+              src={
+               pokeDetails.sprites &&
+              pokeDetails?.sprites?.back_default
+            }
+            alt={pokeDetails.name} />
+            </div>
+            <div id="stats">
+              
+              <h1>Base stats:</h1>
+           
+              { 
+                  <table>
+          
+                <tr><td>HP</td> <td><b>  {pokeDetails.stats && pokeDetails?.stats[0]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[0]?.base_stat}>.</Progress></Bar></td> </tr> 
+
+                <tr> <td>Attack</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[1]?.base_stat}</b></td> 
+                <td><Bar> <Progress  width = {pokeDetails.stats && pokeDetails?.stats[1]?.base_stat}>.</Progress></Bar></td> </tr>
+
+                <tr><td>Defense</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[2]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[2]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>SP. Atk</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[3]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[3]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>SP Def</td> <td><b>{pokeDetails.stats && pokeDetails?.stats[4]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[4]?.base_stat}>.</Progress></Bar></td></tr>
+
+                <tr><td>Speed</td>  <td><b>{pokeDetails.stats && pokeDetails?.stats[5]?.base_stat}</b></td> 
+                <td><Bar> <Progress width = {pokeDetails.stats && pokeDetails?.stats[5]?.base_stat}>.</Progress></Bar></td></tr>
+                  </table>
+               
+              }
+        
+            </div>
+            <div id="title">
+            <p>#0{pokeDetails.id}</p>
+            <h1>{ pokeDetails && pokeDetails?.name?.toUpperCase()}</h1>
+            
+            <ButtonDiv>
+          {pokeDetails.types &&
+           pokeDetails.types.map((type) => {
+              return (
+                <ButtonType pokemonTypes={type.type.name}>
+                  <img src={folha} alt="" /> <p>{type.type.name}</p>
+                </ButtonType>
+              );
+            })}
+        </ButtonDiv>
+            </div>
+             <div id="moves">
+               <h1>Moves:</h1>
+               <br />
+              { pokeDetails.moves &&
+              pokeDetails.moves.splice(5) &&
+            pokeDetails.moves.map((item)=> {
+              return <TypeItem>{item.move.name}</TypeItem>
+            })}
+            </div> 
+            <div id="image">
+              <img 
+              src={
+                pokeDetails &&
+              pokeDetails?.sprites?.other?.[`official-artwork`][`front_default`]
+            }
+            alt={pokeDetails.name} />
+            </div>
+          </Card>
+        </ContentArea>
+      </Content>
+      </div>
+        )}
+
     </div>
   );
 }

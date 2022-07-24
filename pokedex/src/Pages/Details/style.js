@@ -39,7 +39,7 @@ export const Card = styled.div`
   height: 100%;
   background-color: 
   ${(props) => {
-    if (props.pokemonTypes) 
+    if (props.pokemonTypes) {
     switch ( props.pokemonTypes[0].type.name) {
       case "grass":
         return "#729F92;";
@@ -54,7 +54,12 @@ export const Card = styled.div`
       case "fire":
         return "#EAAB7D;";
       default:
-        return 'pink'
+        return 'grey'
+    }
+   
+    }
+    else {
+      return 'grey';
     }}} ; 
 
   margin-bottom: 50px;
@@ -98,6 +103,8 @@ export const Card = styled.div`
   }
 
   #stats {
+    overflow-y: auto;
+    overflow-x: hidden;
     background-color: white;
     width: 25%;
     position: absolute;
@@ -108,11 +115,11 @@ export const Card = styled.div`
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
-    color: grey;
+    color: black;
     text-align: center;
     & h1 {
-    width: 87px;
-    height: 29px;
+    text-align: left;
+   
     font-family: 'Inter', sans-serif;
     font-weight: 1000;
     font-size: 24px;
@@ -120,6 +127,17 @@ export const Card = styled.div`
       margin-top: 18px;
       margin-left: 18px;
      color: #000000;
+      }
+      & table, td, tr {
+        
+        text-align: center;
+        justify-items: auto;
+        font-family: 'Poppins', sans-serif;
+      
+      }
+      & table{
+        margin: 18px;
+        width: 270px;
       }
 
    
@@ -153,6 +171,7 @@ export const Card = styled.div`
   }
 
   #moves {
+    overflow: auto;
     background-color: white;
     width: 20%;
     position: absolute;
@@ -257,24 +276,38 @@ export const HomeButton = styled.div`
 
 export const TypeItem = styled.li`
 
-
 padding: 10px;
-
-
-//position: absolute;
 width: fit-content;
 height: 20px;
-/* left: 814px;
-top: 599px; */
-
 background: #ECECEC;
 border: 1px dashed rgba(0, 0, 0, 0.14);
 border-radius: 12px;
 margin: 18px;
-
 font-family: 'Poppins', sans-serif;
 list-style: none;
 font-weight: 400;
 font-size: 14px;
-color: black
+color: black;
+`
+
+export const Bar = styled.div`
+
+width: 150px;
+height: fit-content;
+position: relative;
+background-color: white;
+
+
+
+`
+
+export const Progress = styled.div`
+
+  width: ${props => props.width}%;
+  background-color: #FF7C2E;
+ align-self: center;
+  color: #FF7C2E;
+  height: 10px;
+
+  border-radius: 30px;
 `

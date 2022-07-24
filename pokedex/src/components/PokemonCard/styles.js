@@ -114,9 +114,8 @@ export const ButtonType = styled.div`
   margin-top: 5px;
   display: flex;
   align-items: center;
-  width: 91px;
-  height: 31px;
-  /* background: #70B873; */
+  width: 100px;
+  height: 30px;
   border: 1px dashed rgba(255, 255, 255, 0.47);
   border-radius: 8px;
   font-style: normal;
